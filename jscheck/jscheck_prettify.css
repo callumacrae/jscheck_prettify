@@ -1,0 +1,9 @@
+.case.pass {
+	color: green;
+}
+.case.lost {
+	color: yellow;
+}
+.case.fail {
+	color: red;
+}
