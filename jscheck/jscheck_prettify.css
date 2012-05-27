@@ -1,9 +1,9 @@
-.case.pass {
+#jscheckreport ul li.pass {
 	color: green;
 }
-.case.lost {
+#jscheckreport ul li.lost {
 	color: yellow;
 }
-.case.fail {
+#jscheckreport ul li.fail {
 	color: red;
 }
