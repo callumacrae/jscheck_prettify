@@ -1,9 +1,1 @@
-#jscheckreport ul li.pass {
-	color: green;
-}
-#jscheckreport ul li.lost {
-	color: yellow;
-}
-#jscheckreport ul li.fail {
-	color: red;
-}
+#jscheckreport{display:inline-block;background-color:#eee;padding:5px 10px;font-family:Verdana;font-size:10pt}#jscheckreport .jscheckcases>div{padding-top:10px}#jscheckreport ul{list-style-type:none;padding-left:10px;margin:0}#jscheckreport ul li.pass{color:#5e7d00}#jscheckreport ul li.lost{color:#ccc252}#jscheckreport ul li.fail{color:#d60000}

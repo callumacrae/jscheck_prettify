@@ -45,13 +45,14 @@ JSC.on_report(function (report) {
 });
 
 function testResultHandler(test) {
-	if (!testResults[test.group]) {
-		testResults[test.group] = {};
+	var group = test.group || 'No Group';
+	if (!testResults[group]) {
+		testResults[group] = {};
 	}
-	if (!testResults[test.group][test.name]) {
-		testResults[test.group][test.name] = [];
+	if (!testResults[group][test.name]) {
+		testResults[group][test.name] = [];
 	}
-	testResults[test.group][test.name].push(test);
+	testResults[group][test.name].push(test);
 }
 JSC.on_fail(testResultHandler);
 JSC.on_lost(testResultHandler);
