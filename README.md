@@ -8,7 +8,7 @@ Add the following to the footer of the document:
 
 ```html
 <script type="text/javascript" src="jscheck/jscheck/jscheck.js"></script>
-<script type="text/javascript" src="jscheck/jscheck.js_prettify"></script>
+<script type="text/javascript" src="jscheck/jscheck/js_prettify.js"></script>
 ```
 
 And the following to the header:
