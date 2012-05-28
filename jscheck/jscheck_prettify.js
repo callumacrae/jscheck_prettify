@@ -13,7 +13,7 @@ JSC.on_report(function (report) {
 		document.body.appendChild(reportdiv);
 	}
 	reportdiv.innerHTML = '<div class="jscheckinfo"></div><div class="jscheckcases"></div>';
-	
+
 	reportdiv.getElementsByClassName('jscheckinfo')[0].innerHTML = result.total + ' tests: '
 		+ result.pass + ' pass, ' + result.lost + ' lost, ' + result.fail + ' fails.';
 
@@ -23,31 +23,23 @@ JSC.on_report(function (report) {
 		groupdiv.innerHTML = '<strong>' + group + '</strong><ul></ul>';
 		reportdiv.getElementsByClassName('jscheckcases')[0].appendChild(groupdiv);
 		for (var testCase in testResults[group]) {
-			var reportText = false;
+			var casediv = document.createElement('li');
+			groupdiv.getElementsByTagName('ul')[0].appendChild(casediv);
+
 			for (var i = 0; i < reports.length - 1; i++) {
 				if (reports[i].indexOf(testCase) === 0) {
-					reportText = reports[i];
+					casediv.innerHTML = reports[i];
 					break;
 				}
 			}
-			
-			if (reportText === false) {
-				throw new Error('Error, not sure why. Ask Callum.');
-			}
-			
-			var status = /: (\d+) cases tested, (\d+) pass/.exec(reportText);
-			if (status[1] === status[2]) {
-				status = 'pass';
-			} else if (!(status = /(\d+) fail/.exec(reportText))) {
-				status = 'lost';
+
+			if (!(/(fail|lost)/.test(casediv.innerHTML))) {
+				casediv.className = 'pass';
+			} else if (/(\d+) lost/.test(casediv.innerHTML)) {
+				casediv.className = 'lost';
 			} else {
-				status = 'fail';
+				casediv.className = 'fail';
 			}
-			
-			var casediv = document.createElement('li');
-			casediv.className = status;
-			casediv.innerHTML = reportText;
-			groupdiv.getElementsByTagName('ul')[0].appendChild(casediv);
 		}
 	}
 });
