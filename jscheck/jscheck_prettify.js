@@ -12,16 +12,22 @@ JSC.on_report(function (report) {
 		reportdiv.id = 'jscheckreport';
 		document.body.appendChild(reportdiv);
 	}
-	reportdiv.innerHTML = '<div class="jscheckinfo"></div><div class="cases"></div>';
 
-	reportdiv.getElementsByClassName('jscheckinfo')[0].innerHTML = result.total + ' tests: '
-		+ result.pass + ' pass, ' + result.lost + ' lost, ' + result.fail + ' fails.';
+	var infodiv = document.createElement('div');
+	infodiv.className = 'jscheckinfo';
+	infodiv.innerHTML = result.total + ' tests: ' + result.pass + ' pass, '
+		+ result.lost + ' lost, ' + result.fail + ' fails.';
+	reportdiv.appendChild(infodiv);
+
+	var casesdiv = document.createElement('div');
+	casesdiv.className = 'jscheckcases';
+	reportdiv.appendChild(casesdiv);
 
 	var reports = report.split('\n');
 	for (var group in testResults) {
 		var groupdiv = document.createElement('div');
 		groupdiv.innerHTML = '<strong>' + group + '</strong><ul></ul>';
-		reportdiv.getElementsByClassName('cases')[0].appendChild(groupdiv);
+		casesdiv.appendChild(groupdiv);
 		for (var testCase in testResults[group]) {
 			var casediv = document.createElement('li');
 			groupdiv.getElementsByTagName('ul')[0].appendChild(casediv);
