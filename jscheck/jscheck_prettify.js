@@ -6,33 +6,35 @@ JSC.on_result(function (res) {
 });
 
 JSC.on_report(function (report) {
-	var reportdiv = document.getElementById('jscheckreport');
+	var casesdiv, casesdiv, group, groupdiv, i, infodiv, reportdiv, reports, testCase;
+
+	reportdiv = document.getElementById('jscheckreport');
 	if (reportdiv === null) {
 		reportdiv = document.createElement('div');
 		reportdiv.id = 'jscheckreport';
 		document.body.appendChild(reportdiv);
 	}
 
-	var infodiv = document.createElement('div');
+	infodiv = document.createElement('div');
 	infodiv.className = 'jscheckinfo';
 	infodiv.innerHTML = result.total + ' tests: ' + result.pass + ' pass, '
 		+ result.lost + ' lost, ' + result.fail + ' fails.';
 	reportdiv.appendChild(infodiv);
 
-	var casesdiv = document.createElement('div');
+	casesdiv = document.createElement('div');
 	casesdiv.className = 'jscheckcases';
 	reportdiv.appendChild(casesdiv);
 
-	var reports = report.split('\n');
-	for (var group in testResults) {
-		var groupdiv = document.createElement('div');
+	reports = report.split('\n');
+	for (group in testResults) {
+		groupdiv = document.createElement('div');
 		groupdiv.innerHTML = '<strong>' + group + '</strong><ul></ul>';
 		casesdiv.appendChild(groupdiv);
-		for (var testCase in testResults[group]) {
-			var casediv = document.createElement('li');
+		for (testCase in testResults[group]) {
+			casediv = document.createElement('li');
 			groupdiv.getElementsByTagName('ul')[0].appendChild(casediv);
 
-			for (var i = 0; i < reports.length - 1; i++) {
+			for (i = 0; i < reports.length - 1; i++) {
 				if (reports[i].indexOf(testCase) === 0) {
 					casediv.innerHTML = reports[i];
 					break;
