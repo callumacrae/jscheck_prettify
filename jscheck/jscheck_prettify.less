@@ -14,14 +14,21 @@
 		padding-left: 10px;
 		margin: 0;
 
-		li.pass {
+		li.pass a {
 			color: #5E7D00;
 		}
-		li.lost {
+		li.lost a {
 			color: #CCC252;
 		}
-		li.fail {
+		li.fail a {
 			color: #D60000;
+		}
+
+		li a {
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }

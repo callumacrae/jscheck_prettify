@@ -36,7 +36,7 @@ JSC.on_report(function (report) {
 
 			for (i = 0; i < reports.length - 1; i++) {
 				if (reports[i].indexOf(testCase) === 0) {
-					casediv.innerHTML = reports[i];
+					casediv.innerHTML = '<a href="#">' + reports[i] + '</a>';
 					break;
 				}
 			}
